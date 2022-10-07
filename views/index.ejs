@@ -39,7 +39,7 @@
                         <th scope="col">Bought @</th>
                         <th scope="col">Price on Steam</th>
                         <th scope="col">ROI</th>
-
+                        <th scope="col">Gain</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,27 +50,47 @@
                             <td><a href="/show/<%=ticket.id%>">
                                     <%= ticket.name %>
                                 </a> </td>
-                                <td>
-                                    <%= ticket.amount %>
-                                </td>
-                                <td>
-                                    <%= ticket.price %>€
-                                </td>
+                            <td>
+                                <%= ticket.amount %>
+                            </td>
+                            <td>
+                                <%= ticket.price %>€
+                            </td>
                             <td>
                                 <%= ticket.currentPrice %>€
                             </td>
                             <td>
-                                <% const ticketRoi = ticket.currentPrice/ticket.price * 100 %> 
-                                <%= ticketRoi.toFixed(0) %>%
+                                <% const ticketRoi=ticket.currentPrice/ticket.price * 100 %>
+                                    <%= ticketRoi.toFixed(0) %>%
+                            </td>
+                            <td>
+                                <% const moneyTotal=(ticket.currentPrice * ticket.amount) - (ticket.price *
+                                    ticket.amount)%>
+                                    <%= moneyTotal.toFixed(2) %>€
                             </td>
                         </tr>
-        
+
                         <% } %>
                 </ul>
             </table>
         </div>
-      </div>
+    </div>
 
+    <div class="container-xxl text-center">
+        <dl class="row">
+            <dt class="col-sm-3">Total Investment</dt>
+            <dd class="col-sm-9"><%=total.totalInvestment.toFixed(2) %>€</dd>
+            
+            <dt class="col-sm-3">Total Value</dt>
+            <dd class="col-sm-9"><%=total.totalValue.toFixed(2) %>€</dd>
+            
+            <dt class="col-sm-3">Total Value after Tax</dt>
+            <dd class="col-sm-9"><%= (total.totalValue *  0.75).toFixed(2) %>€</dd>
+            
+            <dt class="col-sm-3">Total Gain</dt>
+            <dd class="col-sm-9"><%= (total.totalValue *  0.75.toFixed(2) - total.totalInvestment.toFixed(2)).toFixed(2) %>€</dd>
+        </dl>
+    </div>
 
 
 

@@ -21,7 +21,22 @@ mongoose.connect('mongodb://localhost:27017/invstTickets')
     })
 
 const categories = ["case", 'capsule', 'weapon', 'patch', 'agent', 'graffiti', 'sticker']
+let total = {
+    totalInvestment: 0,
+    totalValue: 0,
+}
 
+const getTotal = async function () {
+    total.totalInvestment = 0;
+    total.totalValue = 0;
+
+    let tickets = await Ticket.find({})
+    for (let ticket of tickets) {
+        total.totalInvestment += ticket.price * ticket.amount
+        total.totalValue += ticket.currentPrice * ticket.amount
+    }
+    console.log(total)
+}
 
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "ejs")
@@ -37,8 +52,9 @@ app.get("/", async (req, res) => {
     for (let ticket of tickets) {
         await scrapePrice(ticket.url, ticket)
     }
+    await getTotal()
 
-    res.render("index", { tickets, categories })
+    res.render("index", { tickets, categories, total })
 })
 
 app.get("/create", (req, res) => {
