@@ -80,7 +80,7 @@
       </thead>
       <tbody>
         <tr>
-          <th scope="row"><%= ticket.price * ticket.amount %>€</th>
+          <th scope="row"><%= (ticket.price * ticket.amount).toFixed(2) %>€</th>
           <td><%= (ticket.currentPrice * ticket.amount).toFixed(2) %>€</td>
           <td><%= (ticket.currentPrice * ticket.amount * 0.75).toFixed(2) %>€ </td>
           <td><%= ((ticket.currentPrice * ticket.amount * 0.75).toFixed(2) / (ticket.price * ticket.amount) * 100).toFixed(2) %>% </td>
