@@ -77,19 +77,27 @@
     </div>
 
     <div class="container-xxl text-center">
-        <dl class="row">
-            <dt class="col-sm-3">Total Investment</dt>
-            <dd class="col-sm-9"><%=total.totalInvestment.toFixed(2) %>€</dd>
-            
-            <dt class="col-sm-3">Total Value</dt>
-            <dd class="col-sm-9"><%=total.totalValue.toFixed(2) %>€</dd>
-            
-            <dt class="col-sm-3">Total Value after Tax</dt>
-            <dd class="col-sm-9"><%= (total.totalValue *  0.75).toFixed(2) %>€</dd>
-            
-            <dt class="col-sm-3">Total Gain</dt>
-            <dd class="col-sm-9"><%= (total.totalValue *  0.75.toFixed(2) - total.totalInvestment.toFixed(2)).toFixed(2) %>€</dd>
-        </dl>
+            <dl class="row">
+                <dt class="col-sm-3">Total Investment</dt>
+                <dd class="col-sm-9">
+                    <%=total.totalInvestment.toFixed(2) %>€
+                </dd>
+
+                <dt class="col-sm-3">Total Value</dt>
+                <dd class="col-sm-9">
+                    <%=total.totalValue.toFixed(2) %>€
+                </dd>
+
+                <dt class="col-sm-3">Total Value after Tax</dt>
+                <dd class="col-sm-9">
+                    <%= (total.totalValue * 0.75).toFixed(2) %>€
+                </dd>
+
+                <dt class="col-sm-3">Total Gain</dt>
+                <dd class="col-sm-9">
+                    <%= (total.totalValue * 0.75.toFixed(2) - total.totalInvestment.toFixed(2)).toFixed(2) %>€
+                </dd>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
